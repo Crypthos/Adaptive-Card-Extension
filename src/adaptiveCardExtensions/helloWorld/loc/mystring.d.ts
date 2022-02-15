@@ -9,6 +9,7 @@ declare interface IHelloWorldAdaptiveCardExtensionStrings {
   Description: string;
   PrimaryText: string;
   QuickViewButton: string;
+
 }
 
 declare module 'HelloWorldAdaptiveCardExtensionStrings' {

@@ -10,34 +10,52 @@ import {
 import * as strings from 'HelloWorldAdaptiveCardExtensionStrings';
 import { IHelloWorldAdaptiveCardExtensionProps, IHelloWorldAdaptiveCardExtensionState, QUICK_VIEW_REGISTRY_ID } from '../HelloWorldAdaptiveCardExtension';
 
-export class CardView extends BasePrimaryTextCardView<IHelloWorldAdaptiveCardExtensionProps, IHelloWorldAdaptiveCardExtensionState> {
-  public get cardButtons(): [ICardButton] | [ICardButton, ICardButton] | undefined {
+export class CardView extends BasePrimaryTextCardView<
+  IHelloWorldAdaptiveCardExtensionProps,
+  IHelloWorldAdaptiveCardExtensionState
+> {
+  public get cardButtons():
+    | [ICardButton]
+    | [ICardButton, ICardButton]
+    | undefined {
     return [
       {
         title: strings.QuickViewButton,
         action: {
-          type: 'QuickView',
+          type: "QuickView",
           parameters: {
-            view: QUICK_VIEW_REGISTRY_ID
-          }
-        }
-      }
+            view: QUICK_VIEW_REGISTRY_ID,
+          },
+        },
+      },
+      {
+        title: "Bing",
+        action: {
+          type: "ExternalLink",
+          parameters: {
+            target: "https://www.bing.com",
+          },
+        },
+      },
     ];
   }
 
   public get data(): IPrimaryTextCardParameters {
     return {
       primaryText: strings.PrimaryText,
-      description: this.properties.description
+      description: this.properties.description,
     };
   }
 
-  public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
+  public get onCardSelection():
+    | IQuickViewCardAction
+    | IExternalLinkCardAction
+    | undefined {
     return {
-      type: 'ExternalLink',
+      type: "ExternalLink",
       parameters: {
-        target: 'https://www.bing.com'
-      }
+        target: "https://www.bing.com",
+      },
     };
   }
 }
